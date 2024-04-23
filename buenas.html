@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('images/llama.gif'); 
+
+            background-position: center center;
+            background-repeat: no-repeat;
+
+        }
+
+        .cube {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            animation: spin 5s infinite linear;
+        }
+
+        .cube .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid #fff;
+        }
+
+        .cube .face img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cube .front {
+            transform: rotateX(0deg) translateZ(100px);
+        }
+
+        .cube .back {
+            transform: rotateX(-180deg) translateZ(100px);
+        }
+
+        .cube .right {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .cube .left {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        .cube .top {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .cube .bottom {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center; margin-top: 10px; color: black;">Proyecto ANAL grupo: analysis enjoyers</h1>
+    <div class="cube">
+        <div class="face front">
+            <button id="botonControl">
+                <img src="images/image1.png" alt="..." id="botonImagen">
+            </button>
+        </div>
+        <div class="face back">
+            <!-- You'll never see its back :/ -->
+        </div>
+        <div class="face right">
+            <button id="botonControlDIOR">
+                <img src="images/rs.jpg" alt="..." id="botonImagenDIOR">
+            </button>
+        </div>
+        <div class="face left">
+            <img src="images/rs.jpg" alt="...">
+        </div>
+        <div class="face top">
+            <img src="images/gatosilba.jpg" alt="...">
+        </div>
+        <div class="face bottom">
+            <img src="images/rs.jpg" alt="...">
+        </div>
+    </div>
+
+    <audio autoplay loop id="audioBuenas">
+        <source src="audio/shabi.mp3" type="audio/mp3">
+    </audio>
+
+    <audio autoplay loop id="DIOR">
+        <source src="audio/Pop Smoke - Dior (Official Audio).mp3" type="audio/mp3">
+    </audio>
+
+    
+
+    <script>
+
+        //parte de audio
+
+        let audios = ['audio/Vine Boom sound effect meme.mp3','audio/OH MY GOD Sound Effect.mp3','audio/Cartoon Slipping  Sound Effect.mp3','audio/WAITWAITWAIT WHAT DA HELLLLL WAAZZZAAAA (by ah dog sound effect).mp3','audio/Don Pollo Sound Effect.mp3','audio/Golpe - El Chavo del 8 - Efecto de sonido  Sound effect.mp3'];
+        // Variables para la posición y dirección del movimiento
+        let x = 0, y = 0;
+        let dx = 2, dy = 3;
+
+        function moveCube() {
+            const cube = document.querySelector('.cube');
+
+            // Actualizar la posición del cubo
+            x += dx;
+            y += dy;
+
+            // Comprobar si el cubo ha alcanzado un borde
+            if (x < 0 || x > window.innerWidth - cube.offsetWidth) {
+                dx = -dx; // Cambiar la dirección del movimiento en el eje x
+                playRandomSound();
+
+            }
+            if (y < 0 || y > window.innerHeight - cube.offsetHeight) {
+                dy = -dy; // Cambiar la dirección del movimiento en el eje y
+                playRandomSound();
+            }
+
+            // Aplicar la nueva posición al cubo
+            cube.style.left = x + 'px';
+            cube.style.top = y + 'px';
+
+            // Llamar a moveCube de nuevo después de un corto retraso
+            requestAnimationFrame(moveCube);
+        }
+
+        function playRandomSound() {
+            // Selecciona un audio aleatorio del array
+            let randomAudio = audios[Math.floor(Math.random() * audios.length)];
+
+            // Crea un nuevo objeto Audio y carga el archivo de audio
+            let audio = new Audio(randomAudio);
+
+            // Reproduce el audio
+            audio.play();
+        }
+
+        // Iniciar el movimiento del cubo
+        moveCube();
+    </script>
+</body>
+</html>

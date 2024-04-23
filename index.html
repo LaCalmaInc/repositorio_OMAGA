@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>CODE WITH HOSSEIN</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+
+
+    
+    
+    <h1 style="text-align: center; margin-top: 10px; color: azure;">Proyecto ANAL grupo: analysis enjoyers</h1>
+    <div class="centro">
+        <div class="container">
+                <div class="cube">
+                    <div class="face front">
+                        <button id="botonControl">
+                            <img src="images/image1.png" alt="..." id="botonImagen">
+                        </button>
+                        
+                    </div>
+                    <div class="face back">
+                        <!-- You'll never see its back :/ -->
+                    </div>
+                    <div class="face right">
+                        <button id="botonControlDIOR">
+                            <img src="images/rs.jpg" alt="..." id="botonImagenDIOR">
+                        </button>
+                        
+                    </div>
+                    <div class="face left">
+                        <img src="images/rs.jpg" alt="...">
+                    </div>
+                    <div class="face top">
+                        <img src="images/image1.png" alt="...">
+                    </div>
+                    <div class="face bottom">
+                        <img src="images/rs.jpg" alt="...">
+                    </div>
+                </div>
+        </div>
+    </div>
+    <audio autoplay loop id="audioBuenas">
+        <source src="audio/shabi.mp3" type="audio/mp3">
+    </audio>
+    <audio autoplay loop id="DIOR">
+        <source src="audio/Pop Smoke - Dior (Official Audio).mp3" type="audio/mp3">
+    </audio>
+    
+    <!--
+
+    
+    <button id="botonControl">
+        <img src="images/rb.png" id="botonImagen">
+    </button>
+    -->
+    <script>
+        var audio = document.getElementById("audioBuenas");
+        var botonControl = document.getElementById("botonControl");
+        var botonImagen = document.getElementById("botonImagen");
+
+        var audioDior = document.getElementById("DIOR");
+        var botonControlDIOR = document.getElementById("botonControlDIOR");
+        var btonImagenDIOR = document.getElementById("botonImagenDIOR");
+    
+        botonControl.addEventListener("click", function() {
+            if (audio.paused) {
+                audio.play();
+                botonImagen.src = "images/image1.png";
+            } else {
+                audio.pause();
+                botonImagen.src = "images/image1.png";
+            }
+        });
+
+        botonControlDIOR.addEventListener("click", function() {
+            if (audioDior.paused) {
+                audioDior.play();
+                btonImagenDIOR.src = "images/rs.jpg";
+            } else {
+                audioDior.pause();
+                btonImagenDIOR.src = "images/rs.jpg";
+            }
+        });
+    </script>
+    
+    <br>
+    <br>
+    <br>
+    
+
+    
+
+
+    
+
+</body>
+
+
+</html>
